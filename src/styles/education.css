@@ -1,0 +1,319 @@
+/* Modern Education Section with Interactive Roadmap */
+.education-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.education-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(78, 205, 196, 0.1) 0%, transparent 50%);
+  animation: educationBackground 25s ease-in-out infinite;
+}
+
+@keyframes educationBackground {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.education-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.education-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.education-title h2 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #00d4ff, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+  animation: educationTitleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes educationTitleGlow {
+  from { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5)); }
+  to { filter: drop-shadow(0 0 30px rgba(255, 107, 107, 0.8)); }
+}
+
+.education-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #00d4ff, #ff6b6b, transparent);
+  border-radius: 2px;
+  animation: educationLineGlow 3s ease-in-out infinite;
+}
+
+@keyframes educationLineGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.education-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.education-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #00d4ff, #ff6b6b, #4ecdc4);
+  transform: translateX(-50%);
+  border-radius: 2px;
+  animation: timelinePulse 4s ease-in-out infinite;
+}
+
+@keyframes timelinePulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.education-item {
+  position: relative;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: educationSlideIn 0.8s ease-out forwards;
+}
+
+.education-item:nth-child(odd) {
+  animation-delay: 0.2s;
+}
+
+.education-item:nth-child(even) {
+  animation-delay: 0.4s;
+}
+
+@keyframes educationSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.education-item::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #00d4ff, #ff6b6b);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.2); }
+}
+
+.education-content {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 0 20px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  cursor: pointer;
+}
+
+.education-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 107, 107, 0.1));
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.education-content:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.education-content:hover::before {
+  opacity: 1;
+}
+
+.education-institute {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00d4ff;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+.education-course {
+  font-size: 1.2rem;
+  color: #ff6b6b;
+  margin-bottom: 8px;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+}
+
+.education-score {
+  color: #4ecdc4;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+}
+
+.education-year {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+}
+
+/* Interactive Roadmap */
+.roadmap-container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  margin-top: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.roadmap-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 107, 107, 0.1));
+  border-radius: 20px;
+  opacity: 0.3;
+}
+
+.roadmap-title {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.roadmap-title h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00d4ff;
+  margin-bottom: 10px;
+}
+
+.roadmap-title p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+}
+
+.roadmap-image {
+  position: relative;
+  z-index: 2;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.roadmap-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.roadmap-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.roadmap-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Floating geometric shapes */
+.education-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="20,20 40,20 30,40" fill="rgba(0,212,255,0.1)"><animateTransform attributeName="transform" type="rotate" values="0 30 30;360 30 30" dur="20s" repeatCount="indefinite"/></polygon><circle cx="80" cy="30" r="3" fill="rgba(255,107,107,0.1)"><animate attributeName="r" values="3;8;3" dur="4s" repeatCount="indefinite"/></circle><rect x="60" y="60" width="10" height="10" fill="rgba(78,205,196,0.1)"><animateTransform attributeName="transform" type="rotate" values="0 65 65;360 65 65" dur="15s" repeatCount="indefinite"/></rect></svg>');
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .education-title h2 {
+    font-size: 2.5rem;
+  }
+  
+  .education-timeline::before {
+    left: 20px;
+  }
+  
+  .education-item::before {
+    left: 20px;
+  }
+  
+  .education-content {
+    margin-left: 60px;
+    margin-right: 20px;
+  }
+  
+  .roadmap-container {
+    padding: 20px;
+  }
+}

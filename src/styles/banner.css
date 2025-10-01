@@ -1,0 +1,235 @@
+/* Banner with Sliding Text Animation */
+.banner-section {
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+}
+
+.banner-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="bannerGrid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23bannerGrid)"/></svg>');
+  opacity: 0.3;
+}
+
+.banner-content {
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 100px 20px;
+}
+
+.sliding-text-container {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.sliding-text {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateX(100px);
+  animation: slideInText 0.7s ease-out forwards;
+}
+
+.sliding-text:nth-child(1) {
+  animation-delay: 0.2s;
+  color: #fff;
+}
+
+.sliding-text:nth-child(2) {
+  animation-delay: 0.7s;
+  background: linear-gradient(45deg, #00d4ff, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+}
+
+.sliding-text:nth-child(3) {
+  animation-delay: 1.2s;
+  color: #4ecdc4;
+  font-size: 2.5rem;
+}
+
+.sliding-text:nth-child(4) {
+  animation-delay: 1.7s;
+  color: #ff6b6b;
+  font-size: 2rem;
+}
+
+@keyframes slideInText {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.banner-description {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 3.3s both;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+.banner-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 3.6s both;
+}
+
+.banner-button {
+  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.banner-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.banner-button:hover::before {
+  left: 100%;
+}
+
+.banner-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.banner-button.primary {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating particles for banner */
+.banner-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.particle:nth-child(1) {
+  width: 4px;
+  height: 4px;
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+  width: 6px;
+  height: 6px;
+  top: 60%;
+  left: 80%;
+  animation-delay: 2s;
+}
+
+.particle:nth-child(3) {
+  width: 3px;
+  height: 3px;
+  top: 80%;
+  left: 40%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sliding-text {
+    font-size: 2.5rem;
+  }
+  
+  .sliding-text:nth-child(3) {
+    font-size: 1.8rem;
+  }
+  
+  .sliding-text:nth-child(4) {
+    font-size: 1.4rem;
+  }
+  
+  .banner-description {
+    font-size: 1.1rem;
+  }
+  
+  .banner-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .banner-button {
+    width: 200px;
+  }
+}

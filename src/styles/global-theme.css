@@ -326,9 +326,6 @@ img {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .content-wrapper {
-    padding-top: 60px;
-  }
   
   .about-details {
     grid-template-columns: 1fr;

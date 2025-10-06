@@ -27,6 +27,9 @@ export default async function Home() {
           <div className="particle"></div>
           <div className="particle"></div>
           <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
         </div>
         <div className="banner-content">
           <div className="sliding-text-container">

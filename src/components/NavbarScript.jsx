@@ -34,8 +34,19 @@ export default function NavbarScript() {
     
     const toggleMobileMenu = () => {
       if (navbarToggle && mobileMenu) {
-        navbarToggle.classList.toggle('active')
-        mobileMenu.classList.toggle('active')
+        const isActive = navbarToggle.classList.contains('active')
+        
+        if (isActive) {
+          // Close menu
+          navbarToggle.classList.remove('active')
+          mobileMenu.classList.remove('active')
+          document.body.style.overflow = 'auto'
+        } else {
+          // Open menu
+          navbarToggle.classList.add('active')
+          mobileMenu.classList.add('active')
+          document.body.style.overflow = 'hidden'
+        }
       }
     }
     
@@ -46,6 +57,7 @@ export default function NavbarScript() {
         if (navbarToggle && mobileMenu) {
           navbarToggle.classList.remove('active')
           mobileMenu.classList.remove('active')
+          document.body.style.overflow = 'auto'
         }
       })
     })
@@ -122,10 +134,29 @@ export default function NavbarScript() {
       })
     }
     
+    // Close mobile menu function
+    const closeMobileMenu = () => {
+      if (navbarToggle && mobileMenu) {
+        navbarToggle.classList.remove('active')
+        mobileMenu.classList.remove('active')
+        document.body.style.overflow = 'auto'
+      }
+    }
+
+    // Close menu when clicking outside
+    const handleClickOutside = (event) => {
+      if (mobileMenu?.classList.contains('active') && 
+          !mobileMenu.contains(event.target) && 
+          !navbarToggle?.contains(event.target)) {
+        closeMobileMenu()
+      }
+    }
+
     // Event listeners
     window.addEventListener('scroll', handleScroll)
     window.addEventListener('scroll', updateActiveLink)
     navbarToggle?.addEventListener('click', toggleMobileMenu)
+    document.addEventListener('click', handleClickOutside)
     scrollToTop?.addEventListener('click', scrollToTopHandler)
     
     // Smooth scrolling for anchor links
@@ -184,6 +215,7 @@ export default function NavbarScript() {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('scroll', updateActiveLink)
       navbarToggle?.removeEventListener('click', toggleMobileMenu)
+      document.removeEventListener('click', handleClickOutside)
       scrollToTop?.removeEventListener('click', scrollToTopHandler)
     }
   }, [])

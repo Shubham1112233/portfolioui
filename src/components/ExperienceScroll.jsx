@@ -19,8 +19,18 @@ const ExperienceScroll = ({ experience }) => {
     const scrollContent = scrollContentRef.current;
     const progressFill = progressFillRef.current;
 
-    // Check if we're on mobile (below 768px)
-    const isMobile = window.innerWidth < 768;
+    // Debounce function to prevent excessive resize handling
+    let resizeTimeout;
+    const debounce = (func, delay) => {
+      return (...args) => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => func.apply(this, args), delay);
+      };
+    };
+
+    // Check if we're on mobile (below 768px) - moved inside useEffect to avoid SSR issues
+    const isDesktop = window.innerWidth > 768;
+    const isMobile = !isDesktop;
     
     if (isMobile) {
       // On mobile, just show a simple vertical stack without GSAP
@@ -35,19 +45,37 @@ const ExperienceScroll = ({ experience }) => {
         gsap.registerPlugin(ScrollTrigger);
       }
 
-      // Handle window resize
-      const handleResize = () => {
-        const newIsMobile = window.innerWidth < 768;
-        if (newIsMobile && container._horizontalScroll) {
-          container._horizontalScroll.kill();
-          container._horizontalScroll = null;
+      // Enhanced resize handler with proper cleanup and re-initialization
+      const handleResize = debounce(() => {
+        const newIsMobile = window.innerWidth <= 768;
+        
+        // If switching to mobile, clean up GSAP animations
+        if (newIsMobile) {
+          if (container._horizontalScroll) {
+            container._horizontalScroll.kill();
+            container._horizontalScroll = null;
+          }
+          // Refresh ScrollTrigger to handle layout changes
+          ScrollTrigger.refresh();
+          return;
         }
-      };
+        
+        // If switching to desktop, reinitialize if needed
+        if (!newIsMobile && !container._horizontalScroll) {
+          // Small delay to ensure layout has settled
+          setTimeout(() => {
+            initHorizontalScroll();
+          }, 100);
+        } else if (!newIsMobile && container._horizontalScroll) {
+          // Just refresh ScrollTrigger for existing animations
+          ScrollTrigger.refresh();
+        }
+      }, 150);
 
       window.addEventListener('resize', handleResize);
 
-      // Wait for content to be rendered
-      const timer = setTimeout(() => {
+      // Function to initialize horizontal scroll
+      const initHorizontalScroll = () => {
         // Get the width of the scrollable content
         const scrollWidth = scrollContent.scrollWidth - container.offsetWidth;
 
@@ -87,14 +115,21 @@ const ExperienceScroll = ({ experience }) => {
           // Store reference for cleanup
           container._horizontalScroll = horizontalScroll;
         }
+      };
+
+      // Wait for content to be rendered, then initialize
+      const timer = setTimeout(() => {
+        initHorizontalScroll();
       }, 100);
 
       // Cleanup function
       return () => {
         clearTimeout(timer);
+        clearTimeout(resizeTimeout);
         window.removeEventListener('resize', handleResize);
         if (container._horizontalScroll) {
           container._horizontalScroll.kill();
+          container._horizontalScroll = null;
         }
         if (ScrollTrigger) {
           ScrollTrigger.getAll().forEach(trigger => {

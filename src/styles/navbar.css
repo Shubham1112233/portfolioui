@@ -130,30 +130,29 @@
 /* Mobile Menu */
 .navbar-toggle {
   display: none;
-  flex-direction: column;
   cursor: pointer;
   padding: 5px;
+  position: relative;
+  width: 35px;
+  height: 35px;
 }
 
-.navbar-toggle span {
-  width: 25px;
-  height: 3px;
-  background: #ffffff;
-  margin: 3px 0;
+.navbar-toggle .icon-open {
+  display: block;
   transition: all 0.3s ease;
-  border-radius: 2px;
 }
 
-.navbar-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+.navbar-toggle .icon-close {
+  display: none;
+  transition: all 0.3s ease;
 }
 
-.navbar-toggle.active span:nth-child(2) {
-  opacity: 0;
+.navbar-toggle.active .icon-open {
+  display: none;
 }
 
-.navbar-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -6px);
+.navbar-toggle.active .icon-close {
+  display: block;
 }
 
 /* Mobile Menu Overlay */
@@ -163,19 +162,26 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.98);
   backdrop-filter: blur(20px);
   display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px;
-  z-index: 999;
+  gap: 10px;
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
 }
 
 .navbar-mobile-menu.active {
   display: flex;
+  opacity: 1;
+  visibility: visible;
+  height: 70vh;
 }
+
 
 .navbar-mobile-menu a {
   color: #ffffff;
@@ -209,6 +215,7 @@
   background: rgba(0, 212, 255, 0.1);
   transform: scale(1.05);
 }
+
 
 /* Scroll to Top Button */
 .scroll-to-top {

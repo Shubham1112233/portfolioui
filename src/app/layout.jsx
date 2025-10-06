@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
               <a href="https://www.linkedin.com/in/shubham-ekkaldevi-165464197/" rel="noopener noreferrer" target="_blank">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com" rel="noopener noreferrer" target="_blank">
+              <a href="https://github.com/Shubham1112233?tab=repositories" rel="noopener noreferrer" target="_blank">
                 <i className="fab fa-github"></i>
               </a>
             </div>

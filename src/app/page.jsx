@@ -13,10 +13,10 @@ import "@/styles/education.css";
 
 export default async function Home() {
   const { projects, experience, posts } = await getHomepageData();
-  
+
   // Handle case where data fetching fails
   if (!projects || !experience || !posts) {
-    console.warn('Some data is missing, using fallback values');
+    console.warn("Some data is missing, using fallback values");
   }
 
   return (
@@ -40,15 +40,14 @@ export default async function Home() {
             web and backend development? 🤝 You've found the one. I'm a Software
             Engineer dedicated to turning complex ideas into scalable reality.
             Whether it's a tight-knit startup team or a large enterprise
-            project,Ready to solve them all with
-            me?{" "}
+            project,Ready to solve them all with me?{" "}
           </p>
           <div className="banner-buttons">
-            <a href="#experience" className="banner-button primary">
-              <i className="fas fa-user"></i> About Me
+            <a href="#experience" className="banner-button">
+              <i className="fas fa-code"></i>Experience
             </a>
-            <a href="#projects" className="banner-button">
-              <i className="fas fa-code"></i> My Projects
+            <a href="#contact" className="banner-button primary">
+              <i className="fas fa-user"></i>Work With Me
             </a>
           </div>
         </div>
@@ -80,22 +79,20 @@ export default async function Home() {
                 </p>
 
                 {/* List format for key skills */}
-                <div className="sub-heading">
-                  My Commitment to You
-                </div>
+                <div className="sub-heading">My Commitment to You</div>
                 <ul>
                   <li>
-                    <strong>Seamless Experiences:</strong> Crafting solutions that prioritize
-                    user-centric design.
+                    <strong>Seamless Experiences:</strong> Crafting solutions
+                    that prioritize user-centric design.
                   </li>
                   <li>
-                    <strong>Technical Excellence:</strong> Ensuring the backend engine is as
-                    solid as the front-end interface is beautiful.
+                    <strong>Technical Excellence:</strong> Ensuring the backend
+                    engine is as solid as the front-end interface is beautiful.
                   </li>
                   <li>
-                    <strong>Driven by Passion:</strong> For me, coding is a constant
-                    challenge and a joy. I take immense satisfaction in turning
-                    complex problems into elegant, working solutions.
+                    <strong>Driven by Passion:</strong> For me, coding is a
+                    constant challenge and a joy. I take immense satisfaction in
+                    turning complex problems into elegant, working solutions.
                   </li>
                 </ul>
 
@@ -119,64 +116,108 @@ export default async function Home() {
                 <div className="skill-category">
                   <h3>Frontend Fundamentals</h3>
                   <div className="skill-items">
-                    <span className="skill-item" data-skill="HTML">HTML</span>
-                    <span className="skill-item" data-skill="CSS">CSS</span>
-                    <span className="skill-item" data-skill="JavaScript">JavaScript</span>
+                    <span className="skill-item" data-skill="HTML">
+                      HTML
+                    </span>
+                    <span className="skill-item" data-skill="CSS">
+                      CSS
+                    </span>
+                    <span className="skill-item" data-skill="JavaScript">
+                      JavaScript
+                    </span>
                   </div>
                 </div>
-                
+
                 <div className="skill-category">
                   <h3>Frontend Frameworks</h3>
                   <div className="skill-items">
-                    <span className="skill-item" data-skill="React.js">React.js</span>
-                    <span className="skill-item" data-skill="Redux">Redux</span>
-                    <span className="skill-item" data-skill="Angular">Angular</span>
+                    <span className="skill-item" data-skill="React.js">
+                      React.js
+                    </span>
+                    <span className="skill-item" data-skill="Redux">
+                      Redux
+                    </span>
+                    <span className="skill-item" data-skill="Angular">
+                      Angular
+                    </span>
                   </div>
                 </div>
-                
+
                 <div className="skill-category">
                   <h3>Backend Development</h3>
                   <div className="skill-items">
-                    <span className="skill-item" data-skill="Node.js">Node.js</span>
-                    <span className="skill-item" data-skill="Next.js">Next.js</span>
-                    <span className="skill-item" data-skill="Express.js">Express.js</span>
+                    <span className="skill-item" data-skill="Node.js">
+                      Node.js
+                    </span>
+                    <span className="skill-item" data-skill="Next.js">
+                      Next.js
+                    </span>
+                    <span className="skill-item" data-skill="Express.js">
+                      Express.js
+                    </span>
                   </div>
                 </div>
-                
+
                 <div className="skill-category">
                   <h3>Databases</h3>
                   <div className="skill-items">
-                    <span className="skill-item" data-skill="SQL">SQL</span>
-                    <span className="skill-item" data-skill="PostgreSQL">PostgreSQL</span>
-                    <span className="skill-item" data-skill="MongoDB">MongoDB</span>
-                    <span className="skill-item" data-skill="Redis">Redis</span>
+                    <span className="skill-item" data-skill="SQL">
+                      SQL
+                    </span>
+                    <span className="skill-item" data-skill="PostgreSQL">
+                      PostgreSQL
+                    </span>
+                    <span className="skill-item" data-skill="MongoDB">
+                      MongoDB
+                    </span>
+                    <span className="skill-item" data-skill="Redis">
+                      Redis
+                    </span>
                   </div>
                 </div>
-                
+
                 <div className="skill-category">
                   <h3>CMS & PHP</h3>
                   <div className="skill-items">
-                    <span className="skill-item" data-skill="PHP">PHP</span>
-                    <span className="skill-item" data-skill="WordPress">WordPress</span>
+                    <span className="skill-item" data-skill="PHP">
+                      PHP
+                    </span>
+                    <span className="skill-item" data-skill="WordPress">
+                      WordPress
+                    </span>
                   </div>
                 </div>
-                
+
                 <div className="skill-category">
                   <h3>DevOps & Tools</h3>
                   <div className="skill-items">
-                    <span className="skill-item" data-skill="Git">Git</span>
-                    <span className="skill-item" data-skill="JIRA">JIRA</span>
-                    <span className="skill-item" data-skill="CI/CD">CI/CD</span>
-                    <span className="skill-item" data-skill="Docker">Docker</span>
-                    <span className="skill-item" data-skill="DevOps">DevOps</span>
-                    <span className="skill-item" data-skill="AWS">AWS</span>
+                    <span className="skill-item" data-skill="Git">
+                      Git
+                    </span>
+                    <span className="skill-item" data-skill="JIRA">
+                      JIRA
+                    </span>
+                    <span className="skill-item" data-skill="CI/CD">
+                      CI/CD
+                    </span>
+                    <span className="skill-item" data-skill="Docker">
+                      Docker
+                    </span>
+                    <span className="skill-item" data-skill="DevOps">
+                      DevOps
+                    </span>
+                    <span className="skill-item" data-skill="AWS">
+                      AWS
+                    </span>
                   </div>
                 </div>
               </div>
               <div className="skill-tooltip" id="skill-tooltip">
                 <div className="tooltip-content">
                   <h4 id="tooltip-title">Skill</h4>
-                  <p id="tooltip-description">Hover over skills to learn more</p>
+                  <p id="tooltip-description">
+                    Hover over skills to learn more
+                  </p>
                 </div>
               </div>
             </div>
@@ -283,7 +324,7 @@ export default async function Home() {
                       Qspider's Institute
                     </div>
                     <div className="education-course">
-                      Software Development and Testing
+                      Full Stack Software Development Training
                     </div>
                     <div className="education-score">
                       Professional Certification
@@ -336,8 +377,8 @@ export default async function Home() {
           </section>
         </ScrollReveal>
 
-                {/* Certifications Section - Separate */}
-                <ScrollReveal>
+        {/* Certifications Section - Separate */}
+        <ScrollReveal>
           <section className="certifications-section" id="certifications">
             <div className="certifications-container">
               <div className="certifications-title">
@@ -348,12 +389,17 @@ export default async function Home() {
                   <div className="certification-card-header">
                     <div className="certification-logo">CCNA</div>
                     <div>
-                      <div className="certification-card-title">Cisco Certified Networking Associate</div>
-                      <div className="certification-card-subtitle">Cisco Systems</div>
+                      <div className="certification-card-title">
+                        Cisco Certified Networking Associate
+                      </div>
+                      <div className="certification-card-subtitle">
+                        Cisco Systems
+                      </div>
                     </div>
                   </div>
                   <div className="certification-card-description">
-                    Professional certification in networking fundamentals, routing, and switching technologies.
+                    Professional certification in networking fundamentals,
+                    routing, and switching technologies.
                   </div>
                   <div className="certification-tags">
                     <span className="certification-tag">Networking</span>
@@ -366,12 +412,17 @@ export default async function Home() {
                   <div className="certification-card-header">
                     <div className="certification-logo">Java</div>
                     <div>
-                      <div className="certification-card-title">Complete Java Full Stack Development</div>
-                      <div className="certification-card-subtitle">Simplilearn</div>
+                      <div className="certification-card-title">
+                        Complete Java Full Stack Development
+                      </div>
+                      <div className="certification-card-subtitle">
+                        Simplilearn
+                      </div>
                     </div>
                   </div>
                   <div className="certification-card-description">
-                    Comprehensive full-stack development with Java, Spring Boot, and modern web technologies.
+                    Comprehensive full-stack development with Java, Spring Boot,
+                    and modern web technologies.
                   </div>
                   <div className="certification-tags">
                     <span className="certification-tag">Java</span>
@@ -384,12 +435,17 @@ export default async function Home() {
                   <div className="certification-card-header">
                     <div className="certification-logo">Python</div>
                     <div>
-                      <div className="certification-card-title">Python Programming</div>
-                      <div className="certification-card-subtitle">Simplilearn</div>
+                      <div className="certification-card-title">
+                        Python Programming
+                      </div>
+                      <div className="certification-card-subtitle">
+                        Simplilearn
+                      </div>
                     </div>
                   </div>
                   <div className="certification-card-description">
-                    Advanced Python programming with data structures, algorithms, and web development frameworks.
+                    Advanced Python programming with data structures,
+                    algorithms, and web development frameworks.
                   </div>
                   <div className="certification-tags">
                     <span className="certification-tag">Python</span>
@@ -402,12 +458,17 @@ export default async function Home() {
                   <div className="certification-card-header">
                     <div className="certification-logo">Backend</div>
                     <div>
-                      <div className="certification-card-title">Backend Development Expert</div>
-                      <div className="certification-card-subtitle">Simplilearn</div>
+                      <div className="certification-card-title">
+                        Backend Development Expert
+                      </div>
+                      <div className="certification-card-subtitle">
+                        Simplilearn
+                      </div>
                     </div>
                   </div>
                   <div className="certification-card-description">
-                    Specialized in backend architecture, API development, and database optimization.
+                    Specialized in backend architecture, API development, and
+                    database optimization.
                   </div>
                   <div className="certification-tags">
                     <span className="certification-tag">Node.js</span>
@@ -420,12 +481,17 @@ export default async function Home() {
                   <div className="certification-card-header">
                     <div className="certification-logo">DevOps</div>
                     <div>
-                      <div className="certification-card-title">DevOps Frameworks</div>
-                      <div className="certification-card-subtitle">Simplilearn</div>
+                      <div className="certification-card-title">
+                        DevOps Frameworks
+                      </div>
+                      <div className="certification-card-subtitle">
+                        Simplilearn
+                      </div>
                     </div>
                   </div>
                   <div className="certification-card-description">
-                    Implementation of DevOps practices, CI/CD pipelines, and containerization technologies.
+                    Implementation of DevOps practices, CI/CD pipelines, and
+                    containerization technologies.
                   </div>
                   <div className="certification-tags">
                     <span className="certification-tag">Docker</span>
@@ -438,12 +504,17 @@ export default async function Home() {
                   <div className="certification-card-header">
                     <div className="certification-logo">Frontend</div>
                     <div>
-                      <div className="certification-card-title">Frontend Development</div>
-                      <div className="certification-card-subtitle">Simplilearn</div>
+                      <div className="certification-card-title">
+                        Frontend Development
+                      </div>
+                      <div className="certification-card-subtitle">
+                        Simplilearn
+                      </div>
                     </div>
                   </div>
                   <div className="certification-card-description">
-                    Modern frontend development with React, Vue.js, and responsive web design principles.
+                    Modern frontend development with React, Vue.js, and
+                    responsive web design principles.
                   </div>
                   <div className="certification-tags">
                     <span className="certification-tag">React</span>
@@ -455,7 +526,6 @@ export default async function Home() {
             </div>
           </section>
         </ScrollReveal>
-
 
         {/* Contact - Modern Design */}
         <ScrollReveal>
@@ -503,4 +573,3 @@ export default async function Home() {
     </main>
   );
 }
-

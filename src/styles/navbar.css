@@ -248,6 +248,12 @@
   box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
 }
 
+@media (max-width: 1200px) {
+  .navbar-menu {
+    gap: 10px;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar-menu {

@@ -1,6 +1,7 @@
 import "./globals.css";
 import "../styles/global-theme.css";
 import "../styles/navbar.css";
+import Script from "next/script";
 
 // Client script for sticky nav / scroll-to-top / gsap init
 import LegacyScript from "@/components/legacy-script";
@@ -136,6 +137,24 @@ export default function RootLayout({ children }) {
         {/* Client behaviors */}
         <LegacyScript />
         <NavbarScript />
+
+        {/* Google Analytics */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-DYB4WDSMNN"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-DYB4WDSMNN');
+            `,
+          }}
+        />
       </body>
     </html>
   );
